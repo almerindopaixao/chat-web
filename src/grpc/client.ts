@@ -1,0 +1,18 @@
+import path from 'path'
+import * as protoLoader from '@grpc/proto-loader'
+import * as grpc from '@grpc/grpc-js'
+import { ProtoGrpcType } from './rpc/chat'
+
+
+const packageDefinition = protoLoader.loadSync(
+    path.resolve(process.cwd(), 'proto', 'chat.proto')
+)
+
+const proto = grpc.loadPackageDefinition(
+    packageDefinition
+) as unknown as ProtoGrpcType
+
+export const chatClient = new proto.pb.ChatService(
+    'chatserviceapp:50051',
+    grpc.credentials.createInsecure()
+);
