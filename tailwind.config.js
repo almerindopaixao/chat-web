@@ -1,5 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  future: {
+    // ativar a sintaxe de modelo CSS para usar a diretiva @apply
+    cssModules: true,
+  },
+  experimental: {
+    // ativar a diretiva @apply
+    applyComplexClasses: true,
+  },
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
